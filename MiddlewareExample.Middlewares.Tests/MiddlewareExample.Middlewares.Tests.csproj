@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CustomMiddleware\MiddlewareExample.Middlewares.csproj" />
+    <ProjectReference Include="..\MiddlewareExample.Middlewares\MiddlewareExample.Middlewares.csproj" />
   </ItemGroup>
 
 </Project>
