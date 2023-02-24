@@ -75,7 +75,6 @@ namespace MiddlewareExample.Middlewares.Tests
                 { "MaximumFileBytes", fileLength }
             };
             configurationBuilder.AddInMemoryCollection(configurationCollection);
-            configurationBuilder.Properties.Add("MaximumFileBytes", fileLength);
 
             return configurationBuilder.Build();
         }
