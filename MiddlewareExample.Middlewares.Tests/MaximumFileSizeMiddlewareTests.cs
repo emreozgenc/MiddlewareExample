@@ -15,7 +15,7 @@ namespace MiddlewareExample.Middlewares.Tests
         public async Task OverMaximumSize_ShouldReturn_BadRequest()
         {
             var httpContext = GetHttpContext(4096);
-            var configuration = GetConfiguration("1024");
+            var configuration = GetConfiguration(1024);
             var logger = GetLogger();
             var middleware = new MaximumFileSizeMiddleware(logger.Object, configuration);
 
@@ -35,7 +35,7 @@ namespace MiddlewareExample.Middlewares.Tests
         public async Task UnderMaximumSize_ShouldReturn_Ok()
         {
             var httpContext = GetHttpContext(128);
-            var configuration = GetConfiguration("1024");
+            var configuration = GetConfiguration(1024);
             var logger = GetLogger();
             var middleware = new MaximumFileSizeMiddleware(logger.Object, configuration);
 
@@ -67,12 +67,12 @@ namespace MiddlewareExample.Middlewares.Tests
             return httpContext;
         }
 
-        private IConfiguration GetConfiguration(string fileLength)
+        private IConfiguration GetConfiguration(int fileLength)
         {
             var configurationBuilder = new ConfigurationBuilder();
             var configurationCollection = new Dictionary<string, string>
             {
-                { "MaximumFileBytes", fileLength }
+                { "MaximumFileBytes", fileLength.ToString() }
             };
             configurationBuilder.AddInMemoryCollection(configurationCollection);
 
